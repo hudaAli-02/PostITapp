@@ -15,7 +15,7 @@ const initialState = {
 export const registerUser = createAsyncThunk("users/registerUser",
     async(UserData)=>{
         try{
-            const response = await axios.post("http://localhost:3001/registerUser",{
+            const response = await axios.post(`${ENV.SERVER_URL}/registerUser`,{
                 name: UserData.name,
                 email: UserData.email,
                 password: UserData.password,
@@ -31,7 +31,7 @@ export const registerUser = createAsyncThunk("users/registerUser",
 
 export const login = createAsyncThunk("users/login", async (UserData) => {
     try{
-        const response = await axios.post("http://localhost:3001/login", {
+        const response = await axios.post(`${ENV.SERVER_URL}/login`, {
             email: UserData.email,
             password: UserData.password,
         });
@@ -46,7 +46,7 @@ export const login = createAsyncThunk("users/login", async (UserData) => {
 });
 export const logout = createAsyncThunk("/users/logout", async() => {
     try{
-        const response = await axios.post("http://localhost:3001/logout");
+        const response = await axios.post(`${ENV.SERVER_URL}/logout`);
     }catch(error){}
 });
 
@@ -54,7 +54,7 @@ export const updateUserProfile = createAsyncThunk("user/updateUserProfile", asyn
     try{
 
         const response = await axios.put(
-            `http://localhost:3001/updateUserProfile/${UserData.email}`, 
+            `${ENV.SERVER_URL}/updateUserProfile/${UserData.email}`, 
              {
                 email: UserData.email,
                 name: UserData.name,
