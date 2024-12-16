@@ -16,7 +16,7 @@ app.use(cors());
 
 
 //Database connection
-const connectString ="mongodb+srv://admin:admin@postitcluster.llvss.mongodb.net/postITDb?retryWrites=true&w=majority&appName=PostITCluster";
+const connectString =`mongodb+srv://${ENV.DB_USER}:${ENV.DB_PASSWORD}@${ENV.DB_CLUSTER}/${ENV.DB_NAME}?retryWrites=true&w=majority&appName=PostITCluster";
 
 mongoose.connect(connectString, {
     useNewUrlParser: true,
